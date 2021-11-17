@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Sélection d'application</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, 'sans-serif';
+        }
+
+        html, body{
+            height: 100%;
+            height: 100%;
+        }
+
+        header{
+            height: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background-color: lightblue;
+        }
+
+        #applications{
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .application{
+            border-radius: 6px;
+            padding: 20px;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+            max-width: 200px;
+
+            transition: all 0.15s ease;
+        }
+
+        .application:hover{
+            box-shadow: 0px 0px 15px darkgray;
+        }
+
+        .application img{
+            margin-bottom: 10px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 >Mon Poste local</h1>
+    </header>
+    <div id="applications"></div>
+</body>
+<script type="text/javascript" src="./config.js"></script>
+<script type="text/javascript">
+    window.onload = () => {
+        const applications = config.applications;
+        const divApplication = document.getElementById('applications');
+
+        for(let i = 0; i<applications.length; i++){
+            let app = applications[i];
+            let carte =document.createElement('a');
+            carte.href = app.url;
+            carte.className = 'application';
+            let image = document.createElement('img');
+            image.src = app.image;
+            let nom = document.createElement('h4');
+            nom.innerText = app.nom;
+
+            carte.append(image, nom);
+            divApplication.append(carte)
+        }
+    }
+</script>
+</html>
